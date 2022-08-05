@@ -1,0 +1,18 @@
+{
+	"id": "com.webos.app.videocall",
+	"version": "0.1.0",
+	"vendor": "LGE-SVL",
+	"type": "web",
+	"main": "index.html",
+	"title": "Video Call",
+	"icon": "icon.png",
+	"miniicon": "icon-mini.png",
+	"largeIcon": "icon-large.png",
+	"trustLevel": "trusted",
+	"requiredPermissions": [
+            "application.launcher",
+            "application.operation",
+            "applicationinstall.management"
+        ],
+	"uiRevision": 2
+}
