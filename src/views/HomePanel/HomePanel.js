@@ -17,24 +17,22 @@
 import React from "react";
 import { Panel } from "@enact/sandstone/Panels";
 import Button from "@enact/sandstone/Button";
-import HeaderComponent from "../components/HeaderComponent";
-import MeetingImage from "../../assets/Meeting Room Logo.png";
+
+import MeetingImage from "../../../assets/Meeting Room Logo.png";
 import Image from "@enact/sandstone/Image";
-import "../styles/Home.less";
-import "../styles/Header.less";
 import LS2Request from "@enact/webos/LS2Request";
-// import lunaAction from "./lunaActions";
+
+import css from "./HomePanel.module.less";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 
 class HomePanel extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
     this.state = {};
   }
 
   handleClick = (data) => {
     if (data === "webex") {
-      console.log("reached webex");
       const req = new LS2Request();
       req.send({
         service: "luna://com.webos.applicationManager",
@@ -72,7 +70,6 @@ class HomePanel extends React.Component {
           console.log("failure result is ===> ", res);
         },
       });
-      // return luna-send -n 1 -f palm://com.webos.service.applicationmanager/launch '{"id":"com.webos.app.enactbrowser", "params": {"target":"https://www.google.com", "displayAffinity": 0 }}'
     }
   };
 
@@ -81,22 +78,24 @@ class HomePanel extends React.Component {
       <>
         <Panel noCloseButton>
           <HeaderComponent />
-          <hr className="homeDivider" />
-          <div className="ButtonSet">
-            <Image src={MeetingImage} alt="" className="MeetingImage" />
+          <hr className={css.homeDivider} />
+          <div className={css.maincontainer}>
+            <Image src={MeetingImage} className={css.image} />
             <Button
-              id="JoinButton"
               backgroundOpacity="transparent"
+              className={css.button}
               size="small"
-              onClick={() => this.handleClick("webex")}  	// eslint-disable-line react/jsx-no-bind
+              id="JoinButton"
+              onClick={() => this.handleClick("webex")} // eslint-disable-line react/jsx-no-bind
             >
               Open with Webex
             </Button>
             <Button
-              id="JoinButton"
+              className={css.button}
               backgroundOpacity="transparent"
               size="small"
-              onClick={() => this.handleClick("teams")}  // eslint-disable-line react/jsx-no-bind
+              id="JoinButton"
+              onClick={() => this.handleClick("teams")} // eslint-disable-line react/jsx-no-bind
             >
               Open with Teams
             </Button>

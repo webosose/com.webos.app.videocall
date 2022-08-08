@@ -1,8 +1,8 @@
 import { Component } from "react";
 import ThemeDecorator from "@enact/sandstone/ThemeDecorator";
-import HomePanel from "../views/HomePanel";
 import "./attachErrorHandler";
 import "./App.module.less";
+import HomePanel from "../views/HomePanel/HomePanel";
 
 class App extends Component {
   render() {
