@@ -40,7 +40,7 @@ class HomePanel extends React.Component {
         parameters: {
           id: "com.webos.app.enactbrowser",
           params: {
-            target: "https://lgehq.webex.com/",
+            target: "https://signin.webex.com/join/",
           },
         },
         subscribe: true,
