@@ -1,11 +1,17 @@
-import {render} from 'react-dom';
-import App from "./App";
+/* global ENACT_PACK_ISOMORPHIC */
+import {createRoot, hydrateRoot} from 'react-dom/client';
 
-const appElement = <App />;
+import App from './App';
 
-// In a browser environment, render instead of exporting
+const appElement = (<App />);
+
+// In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+    if (ENACT_PACK_ISOMORPHIC) {
+        hydrateRoot(document.getElementById('root'), appElement);
+    } else {
+        createRoot(document.getElementById('root')).render(appElement);
+    }
 }
 
 export default appElement;
