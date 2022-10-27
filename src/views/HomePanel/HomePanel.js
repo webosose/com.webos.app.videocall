@@ -33,7 +33,7 @@ class HomePanel extends React.Component {
 
   handleClick = (data) => {
     if (data === "webex") {
-      window.PalmSystem.PmLogString(6, 'DATA_COLLECTION', `{ "main":"com.webos.app.videocall", "sub": "", "event": "click", "extra": { "clickeditem":"Open with Webex" }}`, '');
+      window.PalmSystem.PmLogString(6, 'DATA_COLLECTION', `{ "main":"com.webos.app.webex", "name": "WebEx", "event": "click", "extra": {}}`, '');
       const req = new LS2Request();
       req.send({
         service: "luna://com.webos.applicationManager",
@@ -53,7 +53,7 @@ class HomePanel extends React.Component {
         },
       });
     } else {
-      window.PalmSystem.PmLogString(6, 'DATA_COLLECTION', `{ "main":"com.webos.app.videocall", "sub": "", "event": "click", "extra": { "clickeditem":"Open with Teams" }}`, '');
+      window.PalmSystem.PmLogString(6, 'DATA_COLLECTION', `{ "main":"com.webos.app.teams", "name": "Teams", "event": "click", "extra": {}}`, '');
       const req = new LS2Request();
       req.send({
         service: "luna://com.webos.applicationManager",
