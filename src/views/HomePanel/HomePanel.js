@@ -31,7 +31,15 @@ class HomePanel extends React.Component {
     this.state = {};
   }
 
+  getDisplayAffinity = () => {
+    if (typeof window !== 'undefined') {
+        return JSON.parse(window.PalmSystem.launchParams).displayAffinity;
+    }
+    return 0;
+}
+
   handleClick = (data) => {
+    const displayAffinity = this.getDisplayAffinity();
     if (data === "webex") {
       window.PalmSystem.PmLogString(6, 'DATA_COLLECTION', `{ "main":"com.webos.app.webex", "name": "WebEx", "event": "click", "extra": {}}`, '');
       const req = new LS2Request();
@@ -42,6 +50,7 @@ class HomePanel extends React.Component {
           id: "com.webos.app.enactbrowser",
           params: {
             target: "https://signin.webex.com/join/",
+            displayAffinity
           },
         },
         subscribe: true,
@@ -62,6 +71,7 @@ class HomePanel extends React.Component {
           id: "com.webos.app.enactbrowser",
           params: {
             target: "https://teams.microsoft.com/",
+            displayAffinity
           },
         },
         subscribe: true,
